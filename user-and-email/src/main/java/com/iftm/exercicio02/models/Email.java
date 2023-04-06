@@ -25,7 +25,8 @@ public class Email implements Serializable {
     @Column(name = "attachment_mail", nullable = false)
     private String attachment;
     @ManyToOne
-    @JsonBackReference
+//    @JsonBackReference
+    @JsonIgnore
     private User user;
 
     public Email() {

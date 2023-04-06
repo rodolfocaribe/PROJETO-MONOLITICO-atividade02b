@@ -29,7 +29,6 @@ public class User implements Serializable {
     private String socialNetwork;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
     private List<Email> emails = new ArrayList<>();
 
     public User() {
@@ -44,23 +43,13 @@ public class User implements Serializable {
         this.socialNetwork = socialNetwork;
     }
 
-    @JsonIgnore
-    public List<Email> getEmailList() {
+
+    public List<Email> getEmails() {
         return emails;
     }
 
-    public void setEmailList(List<Email> emailList) {
-        this.emails = emailList;
-    }
-
-    public void addEmail(Email email) {
-        email.setUser(this);
-        emails.add(email);
-    }
-
-    public void removeEmail(Email email) {
-        email.setUser(null);
-        emails.remove(email);
+    public void setEmails(List<Email> emails) {
+        this.emails = emails;
     }
 
     public Long getId() {
